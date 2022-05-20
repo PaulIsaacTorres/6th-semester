@@ -1,5 +1,5 @@
 # Java practices
-@autho: Paul Isaac Torres E.
+@author: Paul Isaac Torres E.
 
 ## Folder Structure
 The workspace contains two folders by default, where:
