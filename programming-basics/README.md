@@ -2,5 +2,5 @@
 @author: Paul Isaac Torres E.
 
 ## Folder Structure
-The workspace contains two folders by default, where:
-- `src`: the folder to maintain sources
+The workspace contains the next folders, where:
+- `src_practice`: contains the different practices in java
