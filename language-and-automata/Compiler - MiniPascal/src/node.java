@@ -1,10 +1,10 @@
-public class Node {
+public class node {
     String lexeme;
     int token;
     int line;
-    Node next = null;
+    node next = null;
 
-    Node(String lexeme, int token, int line){
+    node(String lexeme, int token, int line){
         this.lexeme = lexeme;
         this.token = token;
         this.line = line;

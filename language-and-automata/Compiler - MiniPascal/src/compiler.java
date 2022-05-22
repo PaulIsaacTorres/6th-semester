@@ -8,7 +8,7 @@ Torres Enriquez Paul Isaac
 import java.io.IOException;
 
 public class compiler {
-    Node p;
+    node p;
 
     public static void main(String[] args) throws IOException{
         lexicon lexicon = new lexicon();
