@@ -27,4 +27,35 @@ public class lexicon {
     /*q14*/{  15,     15,       15,     15,     15,     15,     15,     15,      15,     15,    15,     15,     15,     15,     15,     15,     15,     15,     15,     15,     15,     15}, //[14]
     /*q15*/{ 502,    502,      502,    502,    502,    502,    502,    502,     502,    502,   502,    502,    502,    502,    502,    502,    121,    502,    502,    502,    502,    502}, //[15]
     };
+
+    String reserved_Words[][]={
+        {"AND",     "200"},
+        {"OR",      "201"},
+        {"NOT",     "202"},
+        {"TRUE",    "203"},
+        {"FALSE",   "204"},
+        {"IF",      "205"},
+        {"THEN",    "206"},
+        {"ELSE",    "207"},
+        {"WHILE",   "208"},
+        {"DO",      "209"},
+        {"BEGIN",   "210"},
+        {"END",     "211"},
+        {"READ",    "212"},
+        {"WRITE",   "213"},
+        {"PROGRAM", "214"},
+        {"STRING",  "215"},
+        {"REAL",    "216"},
+        {"INTEGER", "217"},
+        {"BOOLEAN", "218"},
+        {"VAR",     "219"},
+    };
+
+    String errors[][] = 
+    {
+        {"syntax error, expected digit"                                                          ,"500"},
+        {"syntax error, syntax error, waiting for the = character for the assignment value"      ,"501"},
+        {"syntax error, syntax error, waiting for the ' or '' character for the assignment value","502"},
+        {"syntax error, syntax error, invalid character"                                         ,"503"},
+    };
 }
