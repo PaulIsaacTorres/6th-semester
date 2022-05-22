@@ -7,10 +7,10 @@ public class lexicon {
     String lexeme = "";
     boolean errorFound = false;
 
-    String textEditor = "C://Users//PaulI//Documents//schoolar-projects//language-and-automata//Compiler - MiniPascal//codigo.txt";
+    String textEditor = "C:/Users/PaulI/Desktop/schoolar-projects/language-and-automata/Compiler - MiniPascal/code.txt";
 
     int matrix[][] = {  
-               //   l     d     +     -     *     /     =     <     >     (     )     .    ,      ;     :     '      "   eb   tab   ent   eof    nl    oc
+                //   l     d     +     -     *     /     =     <     >     (     )     .    ,      ;     :     '      "   eb   tab   ent   eof    nl    oc
                 //[00]  [01]  [02]  [03]  [04]  [05]  [06]  [07]  [08]  [09]  [10]  [11]  [12]  [13]  [14]  [15]  [16]  [17]  [18]  [19]  [20]  [21]  [22]
         /* q00 */{   1,    2,  103,  104,  105,    5,    8,    9,   10,  114,  115,  116,  117,  118,   11,   12,   14,  122,  123,  124,  125,  126,  504}, // [00]
         /* q01 */{   1,    1,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100}, // [01]
@@ -54,7 +54,7 @@ public class lexicon {
             /* [19] */ { "var",      "219" },
     };
 
-    String errors[][] = {
+    String errorsList[][] = {
                     //                           0                     1
             /*[00]*/{ "syntax error, expected digit ",               "500" },
             /*[01]*/{ "syntax error, waiting for the / character",   "501" },
@@ -70,6 +70,9 @@ public class lexicon {
             file = new RandomAccessFile(textEditor, "r");
 
             while (character != -1) {
+                character = file.read();
+
+                //check if character is a letter, digit or special and assign a column
                 if (Character.isLetter(((char) character))) {
                     column = 0;
                 } else if (Character.isDigit(((char) character))) {
@@ -130,34 +133,38 @@ public class lexicon {
                         case 13:    //enter
                             column = 19;
                             break;
+                        case 3:     //end of file [eof]
+                            column = 20;
+                            break;
                         case 10:    //new line
                             column = 21;
                             line = line + 1;
+                            break;
                         default:    //other character
                             column = 22;    
                             break;
-                    }
-                    if(character == -1){
-                        column = 20; //end of file [eof]
-                    }
-                }
+                    } //close switch
+                } //end if
 
+                //assign the matrix value
                 valueTM = matrix[state][column];
 
-                if(valueTM < 100){
+                if(valueTM < 100){  //change state in matrix
                     state = valueTM;
 
                     if(state == 0){
-                        lexeme = "";
+                        lexeme = "";    //clean lexeme
                     }else{
-                        lexeme = lexeme + (char)character;
+                        lexeme = lexeme + (char)character;   //add characters to lexeme
                     }
-                }else if(valueTM >= 100 && valueTM < 500){
+
+                }else if(valueTM >= 100 && valueTM < 500){  //final state
                     if(valueTM == 100){
                         validateReservedWord();
                     }
-                    if(valueTM == 100 || valueTM == 102 || valueTM == 103 || valueTM == 109 || valueTM == 111 || valueTM == 119 || valueTM >= 200){
-                        file.seek(file.getFilePointer()-1);
+
+                    if(valueTM == 100 || valueTM == 101 || valueTM == 102 || valueTM == 106 || valueTM == 107 || valueTM == 108 || valueTM == 108 || valueTM >= 200){
+                        file.seek(file.getFilePointer()-1); //i-1
                     }else{
                         lexeme = lexeme + (char)character;
                     }
@@ -172,22 +179,30 @@ public class lexicon {
             printNodes();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally{
+            try {
+                if(file != null){
+                    file.close();
+                }
+            } catch (Exception e) {
+                System.out.println(e. getMessage());
+            }
         }
     }
 
     private void printNodes(){
         p = head;
         while(p != null){
-            System.out.println("" + " " + valueTM + " " + line);
-            
+            System.out.println(p.lexeme + " " + p.token + " " + p.line);
+            p = p.next;
         }
     }
 
     private void printErrorMessage(){
-        if(valueTM >= 500){
-            for(String[] error : errors){
+        if(character != -1 && valueTM >= 500){
+            for(String[] error : errorsList){
                 if(valueTM == Integer.valueOf(error[1])){
-                    System.out.println(error[0] + "error " + valueTM + " character: " + character + " in line " + line + "\n");
+                    System.out.println(error[0] + "error " + valueTM + " character: " + character + " in line " + line);
                 }
             }
             errorFound = true;

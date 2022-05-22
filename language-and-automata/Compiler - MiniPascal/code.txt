@@ -1,0 +1,19 @@
+program desktopRun-test;
+var
+a, x, y :int;
+b:int;
+c:real;
+d:string;
+begin
+read (a, b);
+c := a * b;
+/*This is a comment*/
+if c >= 20 then
+if c >= 20 then
+write (c)
+else
+write (b);
+else
+while c < a do
+write (a)
+end .
