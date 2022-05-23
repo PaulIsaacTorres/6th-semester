@@ -7,12 +7,12 @@ public class lexicon {
     String lexeme = "";
     boolean errorFound = false;
 
-    String textEditor = "C:/Users/PaulI/Desktop/schoolar-projects/language-and-automata/Compiler - MiniPascal/code.txt";
+    String textEditor = "C:/Users/PaulI/Desktop/schoolar-projects/language-and-automata/Compiler - MiniPascal/code.txt"; //Buffer
 
     int matrix[][] = {  
-                //   l     d     +     -     *     /     =     <     >     (     )     .    ,      ;     :     '      "   eb   tab   ent   eof    nl    oc
+                //   l     d     +     -     *     /     =     <     >     (     )     .    ,      ;     :     '     "   eb   tab   ent   eof    nl    oc
                 //[00]  [01]  [02]  [03]  [04]  [05]  [06]  [07]  [08]  [09]  [10]  [11]  [12]  [13]  [14]  [15]  [16]  [17]  [18]  [19]  [20]  [21]  [22]
-        /* q00 */{   1,    2,  103,  104,  105,    5,    8,    9,   10,  114,  115,  116,  117,  118,   11,   12,   14,  122,  123,  124,  125,  126,  504}, // [00]
+        /* q00 */{   1,    2,  103,  104,  105,    5,    8,    9,   10,  114,  115,  116,  117,  118,   11,   12,   14,    0,    0,    0,    0,    0,  504}, // [00]
         /* q01 */{   1,    1,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100}, // [01]
         /* q02 */{ 101,    2,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101,  101}, // [02]
         /* q03 */{ 500,  500,  500,  500,  500,  500,  500,  500,  500,  500,  500,    3,  500,  500,  500,  500,  500,  500,  500,  500,  500,  500,  500}, // [03]
@@ -56,20 +56,20 @@ public class lexicon {
 
     String errorsList[][] = {
                     //                           0                     1
-            /*[00]*/{ "syntax error, expected digit ",               "500" },
-            /*[01]*/{ "syntax error, waiting for the / character",   "501" },
-            /*[02]*/{ "syntax error, waiting for the = character",   "502" },
-            /*[03]*/{ "syntax error, waiting for ' or '' character", "503" },
-            /*[03]*/{ "syntax error, invalid character ",            "504" },
+            /*[00]*/{ "syntax error, expected digit ",               "500"},
+            /*[01]*/{ "syntax error, waiting for the / character",   "501"},
+            /*[02]*/{ "syntax error, waiting for the = character",   "502"},
+            /*[03]*/{ "syntax error, waiting for ' or '' character", "503"},
+            /*[03]*/{ "syntax error, invalid character",             "504"},
     };
 
     RandomAccessFile file = null;
 
     public lexicon() {
         try {
-            file = new RandomAccessFile(textEditor, "r");
+            file = new RandomAccessFile(textEditor, "r");   //open file [only read]
 
-            while (character != -1) {
+            while (character != -1) {   //read character one by one while -not eof-
                 character = file.read();
 
                 //check if character is a letter, digit or special and assign a column
@@ -149,13 +149,13 @@ public class lexicon {
                 //assign the matrix value
                 valueTM = matrix[state][column];
 
-                if(valueTM < 100){  //change state in matrix
+                if(valueTM < 100){                          //transitional state
                     state = valueTM;
 
                     if(state == 0){
-                        lexeme = "";    //clean lexeme
+                        lexeme = "";
                     }else{
-                        lexeme = lexeme + (char)character;   //add characters to lexeme
+                        lexeme = lexeme + (char)character; // ""  
                     }
 
                 }else if(valueTM >= 100 && valueTM < 500){  //final state
@@ -164,14 +164,14 @@ public class lexicon {
                     }
 
                     if(valueTM == 100 || valueTM == 101 || valueTM == 102 || valueTM == 106 || valueTM == 107 || valueTM == 108 || valueTM == 108 || valueTM >= 200){
-                        file.seek(file.getFilePointer()-1); //i-1
+                        file.seek(file.getFilePointer()-1);
                     }else{
                         lexeme = lexeme + (char)character;
                     }
                     insertNode();
                     state = 0;
                     lexeme = "";
-                }else{
+                }else{                                      //Error state
                     printErrorMessage();
                     break;
                 }
@@ -202,7 +202,7 @@ public class lexicon {
         if(character != -1 && valueTM >= 500){
             for(String[] error : errorsList){
                 if(valueTM == Integer.valueOf(error[1])){
-                    System.out.println(error[0] + "error " + valueTM + " character: " + character + " in line " + line);
+                    System.out.println(error[0] + valueTM + " character: " + character + " in line " + line);
                 }
             }
             errorFound = true;
