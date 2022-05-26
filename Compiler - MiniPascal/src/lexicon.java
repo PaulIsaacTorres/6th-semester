@@ -7,7 +7,7 @@ public class lexicon {
     String lexeme = "";
     boolean errorFound = false;
 
-    String textEditor = "C:/Users/PaulI/Desktop/schoolar-projects/language-and-automata/Compiler - MiniPascal/code.txt"; //Buffer
+    String textEditor = "C:/Users/PaulI/Desktop/6th-semester/Compiler - MiniPascal/code.txt"; //Buffer
 
     int matrix[][] = {  
                 //   l     d     +     -     *     /     =     <     >     (     )     .    ,      ;     :     '     "   eb   tab   ent   eof    nl    oc
