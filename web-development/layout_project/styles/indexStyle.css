@@ -131,12 +131,23 @@ header ul li a {
     max-width: 50px;
 }
 
-.circle{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/*Start Footer*/
+footer{
+    height: 150px;
+    padding-right:30px ;
     background-color: #00ADB5;
-    clip-path: circle(600px at right 800px);
+}
+
+footer ul{
+    padding: 30px;
+}
+
+footer ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+footer div ul .sIcon{
+    margin: 5px;
+    max-width: 30px;
 }

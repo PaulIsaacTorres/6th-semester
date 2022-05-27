@@ -52,3 +52,24 @@ header ul li a{
     margin-left: 40px;
     text-decoration: none;
 }
+
+/*Start Footer*/
+footer{
+    height: 150px;
+    padding-right:30px ;
+    background-color: #00ADB5;
+}
+
+footer ul{
+    padding: 30px;
+}
+
+footer ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+footer div ul .sIcon{
+    margin: 5px;
+    max-width: 30px;
+}
