@@ -1,0 +1,185 @@
+/*font*/
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Inter:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+header ul{
+    background-color: #101317;
+}
+
+header li, header a, button{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f3f3f3;
+    text-decoration: none;
+    background-color: #101317;
+}
+
+li{
+    list-style: none;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: #101317;
+  max-width: 100%;
+}
+
+.brandLetter{
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.navLinks li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.navLinks li a{
+    transition: all 0.3 ease-in-out 0s;
+}
+
+.navLinks li a:hover{
+    color: #00ADB5;
+}
+
+button{
+    margin-left: 10px;
+    padding: 9px 25px;
+    background-color: #00ADB5;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3 ease-in-out 0s;
+}
+
+button:hover{
+    background-color: #f3f3f3;
+    color: #101317;
+}
+
+/*First Section*/
+section{
+    height: 650px;
+    background-color: #f3f3f3;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.content .textBox{
+    position: relative;
+    max-width: 600px;
+}
+
+.content .textBox h2{
+    color: #101317;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+
+.content .textBox h2 span{
+    color: #00ADB5;
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
+.content .textBox p{
+    color: #101317;
+    font-family: 'Inter', sans-serif;
+}
+
+.content .imgBox img{
+    width: 500px;
+}
+
+/*Start Footer*/
+.footer{
+    width: 100%;
+    background-color: #101317;
+}
+
+.footer .group1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.footer .group1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .group1 .box figure img{
+    width: 300px;
+}
+
+.footer .group1 .box h2{
+    color: #f3f3f3;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.footer .group1 .box p{
+    color: #f3f3f3;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer .group1 .box .social a{
+display: inline-block;
+text-decoration: none;
+line-height: 45px;
+margin-right:10px ;
+border-radius: 50px;
+transition: all 300ms ease;
+}
+
+.footer .group1 .box .social .snIcon img{
+    width: 50px;
+}
+
+.footer .group2{
+    background-color: #303841;
+    padding: 15px 10px;
+    text-align: center;
+    color: #f3f3f3;
+}
+
+.footer .group2 small{
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+@media screen and(max-width: 800px){
+    .footer .group1{
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 50px;
+        padding: 45px 0px;
+    }
+}
