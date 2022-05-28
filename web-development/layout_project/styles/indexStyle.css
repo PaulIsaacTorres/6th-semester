@@ -9,9 +9,10 @@
 
 section {
     position: relative;
-    width: 100%;
+    width: auto;
     min-height: 100vh;
-    padding: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,8 +105,35 @@ header ul li a {
     text-decoration: none;
 }
 
-.content .imgBox img{
-    max-width: 400px;
+.scanImg{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scanImg .brain{
+    position: relative;
+    width: 380px;
+    height: 380px;
+    background: url(../img/artificial-intelligence.png);
+    background-size: 380px;
+}
+
+.scanImg .brain::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/artificial-intelligence_blue.png);
+    background-size: 300px;
+    animation: animate 4s ease-in-out infinite;
+}
+
+form div label{
+    font-size: larger;
 }
 
 .sci{

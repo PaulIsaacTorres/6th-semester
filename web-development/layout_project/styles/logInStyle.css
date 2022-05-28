@@ -48,9 +48,39 @@ header ul li a{
     display: inline-block;
     color: #333;
     font-weight: 100;
-    font-size: larger;
+    font-size: 16px;
     margin-left: 40px;
     text-decoration: none;
+}
+
+.imgBox img{
+    max-width: 200px;
+}
+
+.joinText h2{
+    font-size: xx-large;
+    padding-left: 100px;
+    padding-bottom: 20px;
+    color: #00ADB5;
+}
+
+.joinText pre{
+    font-size: larger;
+}
+
+.loginForm{
+    background-color: #00ADB5;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm img{
+    max-width: 200px;
 }
 
 /*Start Footer*/
