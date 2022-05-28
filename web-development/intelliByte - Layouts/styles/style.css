@@ -69,7 +69,7 @@ button:hover{
 
 /*First Section*/
 section{
-    height: 650px;
+    height: 600px;
     background-color: #f3f3f3;
 }
 
@@ -108,6 +108,75 @@ section{
 .content .imgBox img{
     width: 500px;
 }
+
+/*Form*/
+.loginForm{
+    width: 400px;
+    height: 750px;
+    background-color:#303841 ;
+    padding: 30px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    color: #f3f3f3;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.loginForm h4{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.controls{
+    width: 100%;
+    background-color: #303841;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #101317;
+    color: #f3f3f3;
+}
+
+.loginForm p{
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.loginForm a{
+    color: #f3f3f3;
+    text-decoration: none;
+}
+
+.loginForm a:hover{
+    color: #f3f3f3;
+    text-decoration: underline;
+}
+
+.loginForm .imgContainer{
+    padding-left:35px;
+}
+
+.loginForm .imgForm{
+    width: 270px;
+}
+
+.loginForm .botons{
+    width: 100%;
+    background-color: #00ADB5;
+    border: none;
+    padding: 12px;
+    color: #f3f3f3;
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+
+/*Table*/
+
 
 /*Start Footer*/
 .footer{
