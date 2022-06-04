@@ -14,7 +14,7 @@ public class compiler {
         lexicon lexicon = new lexicon();
 
         if(!lexicon.errorFound){
-            System.out.println("Analizador léxico terminado");
+            System.out.println("Analizador lexico terminado");
         }
     }
 }

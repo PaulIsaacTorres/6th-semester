@@ -1,5 +1,4 @@
-&
-program desktopRun-test;
+program test;
 var
 a, x, y :int;
 b:int;
