@@ -293,7 +293,6 @@ public class lexicon {
                     System.out.println("Se espera el caracter ,");
                 }
             }else{
-                System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << end token in type");
                 System.out.println("Se espera un identificador");
             }
         }
@@ -301,7 +300,6 @@ public class lexicon {
             p = p.next;
             type();
         }else{
-            System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << init token in vD");
             System.out.println("Se espera el caracter :");
         }
     }
@@ -315,6 +313,127 @@ public class lexicon {
     }
     
     private void statementPart() {
-        System.out.println(" <!> ");
+        if(p.token == 210){
+            p = p.next;
+                statement();
+                if (p.token == 211) {
+                    p = p.next;
+                }else{
+                    System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << $ token in ");
+                    System.out.println("Se espera la palabra end");
+                }
+        }else{
+            System.out.println("Se espera la palabra begin");
+        }
+    }
+
+    private void statement() {
+        simpleStatement(); // or structuredStatement();
+    }
+
+    private void simpleStatement() {
+        if(p.token == 100 && p.next.token == 113){
+            assignamentStatement();
+        }else{
+            System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << $ token in ");
+            System.out.println("Se espera un identificador");
+        }
+
+        if(p.token == 212){
+            readStatement();
+        }
+        
+        if(p.token == 213){
+            writeStatement();
+        }
+        
+    }
+
+    private void assignamentStatement() {
+        if(p.token == 100){
+            p = p.next;
+            if(p.token == 113){
+                p = p.next;
+                //expression();
+            }else{
+                System.out.println("Se espera el caracter :=");
+            }
+        }else{
+            System.out.println("Se espera un identificador");
+        }
+    }
+
+    private void readStatement() {
+        if(p.token == 212){     //READ
+            System.out.println("<>");
+            p = p.next;
+            if(p.token == 114){     // (
+                p = p.next;
+                while(p.token != 115){     
+                    if(p.token == 100){     // IDENTIFIER
+                        p = p.next;
+                        if(p.token == 117 && p.next.token != 115){   // ; IF NEXT TOKEN IS DIFFERENT TO )
+                            p = p.next;
+                        }else{
+                            break;
+                        }
+                    }else{
+                        System.out.println("Se espera un identificador");
+                    }
+                }
+                if(p.token == 115){     // )
+                    p = p.next;
+                    if(p.token == 118){
+                        p = p.next;
+                    }else{
+                        System.out.println("Se espera el caracter ;");
+                    }
+                }else{
+                    System.out.println("Se espera el caracter )");
+                }
+            }else{
+                System.out.println("Se espera el caracter (");
+            }
+        }else{
+            System.out.println("Se espera la palabra read");
+        }
+    }
+
+    private void writeStatement() {
+        if(p.token == 213){     //WRITE
+            p = p.next;
+            if(p.token == 114){     // (
+                p = p.next;
+                while(p.token != 115){     
+                    if(p.token == 100){     // IDENTIFIER
+                        p = p.next;
+                        if(p.token == 117 && p.next.token != 115){   // ; IF NEXT TOKEN IS DIFFERENT TO )
+                            p = p.next;
+                        }else{
+                            break;
+                        }
+                    }else{
+                        System.out.println("Se espera un identificador");
+                    }
+                }
+                if(p.token == 115){     // )
+                    p = p.next;
+                    if(p.token == 118){
+                        p = p.next;
+                    }else{
+                        System.out.println("Se espera el caracter ;");
+                    }
+                }else{
+                    System.out.println("Se espera el caracter )");
+                }
+            }else{
+                System.out.println("Se espera el caracter (");
+            }
+        }else{
+            System.out.println("Se espera la palabra read");
+        }
     }
 }
+
+//System.out.println("<>");
+//System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << $ token in ");
