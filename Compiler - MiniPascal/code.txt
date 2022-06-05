@@ -1,9 +1,6 @@
 program test;
 var
-a, x, y :int;
-b:int;
-c:real;
-d:string;
+a, x, y : int;
 begin
 read (a, b);
 c := a * b;
@@ -16,4 +13,4 @@ write (b);
 else
 while c < a do
 write (a)
-end .
+end.

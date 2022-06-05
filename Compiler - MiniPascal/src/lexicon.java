@@ -49,7 +49,7 @@ public class lexicon {
             /* [14] */ { "program",  "214" },
             /* [15] */ { "string",   "215" },
             /* [16] */ { "real",     "216" },
-            /* [17] */ { "integer",  "217" },
+            /* [17] */ { "int",      "217" },
             /* [18] */ { "boolean",  "218" },
             /* [19] */ { "var",      "219" },
     };
@@ -155,7 +155,7 @@ public class lexicon {
                     if(state == 0){
                         lexeme = "";
                     }else{
-                        lexeme = lexeme + (char)character; // ""  
+                        lexeme = lexeme + (char)character;
                     }
 
                 }else if(valueTM >= 100 && valueTM < 500){  //final state
@@ -177,6 +177,7 @@ public class lexicon {
                 }
             }
             printNodes();
+            syntactic();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally{
@@ -226,5 +227,94 @@ public class lexicon {
             p.next = node;
             p = node;
         }
+    }
+
+    /*START SYNTACTIC ANALIZER*/
+    private void syntactic() {
+        p = head;
+        while(p != null){
+            if(p.token == 214){
+                p = p.next;
+                if(p.token == 100){
+                    p = p.next;
+                    if(p.token == 118){
+                        p = p.next;
+                        block();
+                        if(p.token == 116){
+                            p = p.next;
+                        }else{
+                            System.out.println("Se espera el caracter .");
+                        }
+                    }else{
+                        System.out.println("Se espera el caracter ;");
+                    }
+                }else{
+                    System.out.println("Se espera un identificador");
+                }
+            }else{
+                System.out.println("Se espera la palabra program");
+            }
+            break;
+        }
+    }
+
+    private void block() {
+        variableDeclarationPart();
+        statementPart();
+    }
+    
+    private void variableDeclarationPart() {
+        if(p.token == 219){
+            p = p.next;
+            while(p.token != 210){
+                variableDeclaration();
+                if(p.token == 118){
+                    p = p.next;
+                }else{
+                    System.out.println("Se espera el caracter ;");
+                }
+            }
+        }else{
+            System.out.println("Se espera la palabra var");
+        }
+    }
+    
+    private void variableDeclaration() {
+        while(p.token == 100 || p.token == 117){
+            if(p.token == 100){
+                p = p.next;
+                if(p.token == 117){
+                    p = p.next;
+                    if(p.next.token == 119 && p.token == 100){
+                        p = p.next;
+                        break;
+                    }
+                }else{
+                    System.out.println("Se espera el caracter ,");
+                }
+            }else{
+                System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << end token in type");
+                System.out.println("Se espera un identificador");
+            }
+        }
+        if(p.token == 119){
+            p = p.next;
+            type();
+        }else{
+            System.out.println(" >> " + p.lexeme + " | " + p.token + " | " + p.line + " << init token in vD");
+            System.out.println("Se espera el caracter :");
+        }
+    }
+    
+    private void type() {
+        if(p.token == 215 || p.token == 216 || p.token == 217 || p.token == 218){
+            p = p.next;
+        }else{
+            System.out.println("Se espera el tipo de dato");
+        }
+    }
+    
+    private void statementPart() {
+        System.out.println(" <!> ");
     }
 }

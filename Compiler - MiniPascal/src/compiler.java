@@ -14,7 +14,12 @@ public class compiler {
         lexicon lexicon = new lexicon();
 
         if(!lexicon.errorFound){
+            System.out.println("");
             System.out.println("Analizador lexico terminado");
+            syntactic syntactic = new syntactic();
+            if(!syntactic.errorFound){
+                System.out.println("Analizador Sintactico terminado");
+            }
         }
     }
 }
