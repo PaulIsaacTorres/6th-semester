@@ -280,7 +280,7 @@ public class lexicon {
     }
     
     private void variableDeclaration() {
-        while(p.token == 100 || p.token == 117){
+        while((p.token == 100 || p.token == 117) && p.token != 118){
             if(p.token == 100){
                 p = p.next;
                 if(p.token == 117){
