@@ -2,7 +2,7 @@ program ejemplo1;
 
 var
 
-    a, x, y : int;
+    a, x, y, b : int;
 
 begin
 
@@ -13,10 +13,10 @@ begin
     
     if c >= 20 then
         if c >= 20 then
-            write (c)
+            write (c);
         else
             write (b);
     else
         while c < a do
-            write (a)
+            write (a);
 end.
