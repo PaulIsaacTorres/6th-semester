@@ -3,9 +3,6 @@ program ejemplo1;
 var
 
     a, x, y : int;
-    b:int;
-    c:real;
-    d:string;
 
 begin
 
@@ -22,5 +19,4 @@ begin
     else
         while c < a do
             write (a)
-
 end.
