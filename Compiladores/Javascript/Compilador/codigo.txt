@@ -1,0 +1,5 @@
+program &;
+//adsasda
+var
+    
+    a, x, y, b : int;
